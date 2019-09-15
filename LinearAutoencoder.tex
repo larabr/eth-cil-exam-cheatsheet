@@ -1,0 +1,15 @@
+% -*- root: Main.tex -*-
+
+
+
+\section{Linear Autoencoder}
+Encoder $C \in \mathbb{R}^{K,N}$, decoder $D \in \mathbb{R}^{N,K}$ to approx identity map $\mathbf{x \approx DCx}$ for $K << N$.
+\subsection*{Echart-Young Theorem} 
+Best rank-$k$ approx (non-convex domain) of $\mathbf{A = U \Sigma V^\top}$ given by $k$ largest eigenvectors\\
+$\quad \argmin_{rank(B)=k}\|\mathbf{A-B}\|_F^2 = \mathbf{A_k = U\Sigma_k V^\top}$ \\
+$||A-A_k||_F^2 = \sum_{r=k+1}^{rank(A)} \sigma_r^2 $,
+$\quad||A-A_k||_2 = \sigma_{k+1}$
+\subsection*{Optimal Linear Autoencoder via SVD}
+By EY thrm, optimal reconstruction of $\mathbf{X = U \Sigma V^\top}$ given by $C^*=\mathbf{AU}^\top_k$, $D^*=\mathbf{U_kA^{-1}}$ for any invertible $\mathbf{A}$. To reduce d.o.f. and ambiguity, do \textbf{weight sharing} and pick $\mathbf{D=C^\top}$.
+
+

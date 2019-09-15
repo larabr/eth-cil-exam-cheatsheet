@@ -1,7 +1,7 @@
 % !TEX root = Main.tex
 \section{Matrix Approximation \& Reconstruction}
 
-$\min_{rank(B)=k}[\sum_{(i,j)\in I}{(a_{ij}-b_{ij})^2}], I=\{(i,j): \mathit{ob.}\}$
+$\min_{rank(B)=k}[\sum_{(i,j)\in I}{(a_{ij}-b_{ij})^2}], I=\{(i,j): \mathit{obs.}\}$
 \subsection*{Alternating Least Squares}
 $f(U,v_i) = \sum_{(i,j)\in I} (a_{i,j} - \langle u_j, v_i \rangle)^2$\\
 $f(u_i,V) = \sum_{(i,j)\in I} (a_{i,j} - \langle u_j, v_i \rangle)^2$\\
@@ -24,14 +24,12 @@ Convex when fixed one.
 
 % YZF: need revising
 \subsection*{Convex Optimization}
-Def.: $\{(x,t)|x \in dom f, f(x) \leq t\}$, $f : \mathbb{R}^D \rightarrow \mathbb{R}$ is convex, if $dom\ f$ is a convex set, and if $\forall \mathbf{x}, \mathbf{y} \in dom\ f$, and $\forall \alpha\in[0,1]$: $f(\alpha \mathbf{x} + (1 - \alpha)\mathbf{y}) \leq \alpha f(\mathbf{x}) + (1-\alpha)f(\mathbf{y})$. 
-Convex $\iff$ Hessian p.s.d $\iff$ local=global \\
-Positive semi-definite: all principal minors (same-indexed rows and columns) $\geq$ 0\\
-Positive definite: leading principal minors $>$ 0
+$f : \mathbb{R}^D \rightarrow \mathbb{R}$ is convex, if $dom\ f$ is a convex set (i.e. points on the line between any two points are also in the set), and if $\forall \mathbf{x}, \mathbf{y} \in dom\ f$, $\forall \alpha\in[0,1]$: $f(\alpha \mathbf{x} + (1 - \alpha)\mathbf{y}) \leq \alpha f(\mathbf{x}) + (1-\alpha)f(\mathbf{y})$. 
+Convex $\iff$ local=global
 
 \subsection*{Convex Relaxation}
 Replace non-convex rank constraints by convex norm constraints (superset). Then project optimum back (hopefully still optimal).\\
-$\min_{\mathbf{B}\in P_k}{\|\mathbf{A-B}\|^2_G}, P_k=\{\mathbf{B}:\|\mathbf{B}\|_{*}\leq k\}\supseteq Q_k=\{\mathbf{B}:\mathit{rank}(\mathbf{B})\leq k\}$ (in fact tightest convex lowerbound $\mathit{rank}(\mathbf{B})\geq \|\mathbf{B}\|_{*}, for \|\mathbf{B}\|_2 \leq 1$)
+$\min_{\mathbf{B}\in P_k}{\|\mathbf{A-B}\|^2_G}, P_k=\{\mathbf{B}:\|\mathbf{B}\|_{*}\leq k\}\supseteq Q_k=\{\mathbf{B}:\mathit{rank}(\mathbf{B})\leq k\}$ (as tightest convex lower-bound $\mathit{rank}(\mathbf{B})\geq \|\mathbf{B}\|_{*} : \|\mathbf{B}\|_2 \leq 1$)
 
 \subsection*{SVD Thresholding}
 % TBA

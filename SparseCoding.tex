@@ -4,7 +4,7 @@
 Pros: fast inverse; preserves energy. 
 For $\mathbf{x}$ and orthog. mat. $\mathbf{U}$ compute $\mathbf{z} = \mathbf{U}^\top \mathbf{x} $. Approx $ \mathbf{\hat{x}} = \mathbf{U\hat{z}}$, $\hat{z}_i = z_i$ if $ \lvert z_i \rvert > \epsilon$ else 0.
 Reconstruction Error $\|\mathbf{x}-\mathbf{\hat{x}}\|^2 = \sum_{d\notin\sigma}\langle\mathbf{x},\mathbf{u}_d\rangle ^2$.
-Choice of base depends on signal. Fourier for global, wavelet for local support. PCA basis optimal for given $\Sigma$. Stripes \& check patterns: hi-freq in Fourier.
+\textbf{Choice of base} depends on signal. Fourier for global, wavelet for local support. PCA basis optimal for given $\Sigma$. Stripes \& check patterns: hi-freq in Fourier.
 
 \subsection*{Haar Wavelets (form orthogonal basis)}
 scaling fcn $\phi(x)=[1,1,1,1]$, mother $W(x)=[1,1,-1,-1]$, dilated $W(2x)=[1,-1,0,0]$, translated $W(2x-1)=[0,0,1,-1]$

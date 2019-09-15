@@ -1,9 +1,14 @@
-\section{Deep Unsupervised Learning}
+\section{Generative Models}
 \subsection*{Autoregressive}
 Image $p(\mathbf{x})=\Pi_i^{n^2}p(x_i|x_1,\cdots,x_{i-1})$ \\
 
 \subsection*{Variational Autoencoder}
-$D_{KL}(P\|Q)=\sum_i P(i)\log\frac{P(i)}{Q(i)}=\mathbb{E}_i [\frac{\log P_i}{\log Q_i}]$ (0:similar) \\
-Elbo $\mathbb{E}_{x\sim P_{\mathbb{X}}}[\mathbb{E}_{z\sim Q}{\log P_g(x|z)}-D^{\mathit{KL}}(Q(z|x)\|P(z))]$ \\
+$D_{KL}(P\|Q)=\sum_i P(i)\log\frac{P(i)}{Q(i)}=\mathbb{E}_i [\frac{\log P_i}{\log Q_i}]$ (0: similar) \\
+Elbo $\log{p_\theta(x)} \ge \mathbb{E}{z\sim Q}[{\log P\theta(x|z)}]-D^{\mathit{KL}  }(Q(z|x)\|P(z))$ \\
 $Q$ enc. posterior distr., $P(z)$ prior distr. on latent var $z$, $P_g$ likelihood of dec. generated $\mathbf{x}$ \\
 Jointly trained: enc. optimize regularizer term, sample $\mathbf{z}\sim Q$, feed to dec., produce $\hat{x}$ to max. reconstruction quality. Both terms diff'able, can use SGD to train end-to-end.
+
+\subsection*{Generative Adversarial Networks}
+Optimal Bayes classifier: posterior $ q_\theta = p/(p + p_\theta) $ (often inaccessible)
+Generator vs classifier (to fool)
+% Train generator: $min_\theta l^*(\theta) = E_{p_\theta}[y \ln q_\theta (x) ]$

@@ -8,11 +8,18 @@
 %\usepackage[lf]{MyriadPro}
 %\usepackage[lf,minionint]{MinionPro}
 \usepackage{multicol}
+\setlength\columnsep{2mm}
+\setlength{\columnseprule}{0.4pt}
+
 \usepackage{wrapfig}
 \usepackage{paralist}
+\setdefaultleftmargin{5mm}{}{}{}{}{}
 \usepackage[top=0mm,bottom=3mm,left=1mm,right=1mm]{geometry}
 \usepackage[framemethod=tikz]{mdframed}
 \usepackage{microtype}
+\usepackage[document]{ragged2e}
+\usepackage{enumitem}
+\setlist{nosep}
 
 % math helpers
 \DeclareMathOperator*{\argmin}{arg\,min}
@@ -37,16 +44,10 @@ linecolor=gray,linewidth=1pt,%
 leftmargin=0mm,rightmargin=0mm,skipbelow=0mm,skipabove=0mm,
 }
 
-\newcommand{\header}{
-\begin{mdframed}[style=header]
-\footnotesize
-\sffamily
-Cheat sheet\\
-Daniel Yu,~page~\thepage~of~2
-\end{mdframed}
-}
-
 \makeatletter
+
+
+
 \renewcommand{\section}{\@startsection{section}{1}{0mm}%
                                 {.2ex}%
                                 {.2ex}%x
@@ -57,6 +58,8 @@ Daniel Yu,~page~\thepage~of~2
                                 {\sffamily\bfseries}}
 
 
+
+
 \makeatother
 \setlength{\parindent}{0pt}
 
@@ -65,18 +68,20 @@ Daniel Yu,~page~\thepage~of~2
 \begin{multicols*}{4}
 \setcounter{section}{-1}
 \input{Essentials}
+\input{LinearAutoencoder}
 \input{PCA}
-\input{SVD}
 \input{Reconstruction}
 \input{NMF}
 \input{WordEmbedding}
 \input{Mixture}
 % \input{KMeans}
 % \input{GaussianMixtureModel}
-\input{SparseCoding}
-\input{DictionaryLearning}
+
 \input{NeuralNetworks}
 \input{Generative}
+
+\input{SparseCoding}
+\input{DictionaryLearning}
 % \input{RobustPCA}
 \end{multicols*}
 \end{document}

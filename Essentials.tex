@@ -2,81 +2,86 @@
 \section{Essentials}
 \subsection*{Matrix/Vector}
 \begin{compactdesc}
-    \item[Range, Kernel, Nullity:]
+    \item[Vec Spaces:]
     % range
-    $\mathit{range}(\mathbf{A}) = \{\textbf{z} | \exists \textbf{x}: \textbf{z}=\textbf{Ax}\} = \mathit{span}(\text{columns of A})$ \\
+    $\mathit{range}(\mathbf{A}) = C(\mathbf{A})= \{\,\textbf{z}\, |\, \exists \textbf{x}: \textbf{z}=\textbf{Ax}\}$ \\
     % rank
-    $\mathit{rank}(\mathbf{A}) = \mathit{dim}(\mathit{range}(\mathbf{A}))$ \\
-    % kernel
-    $\mathit{kernel}(A) = \{\mathbf{x}: \mathbf{Ax}=\mathbf{0}\}$ (spans nullspace)\\
+    $\mathit{rank}(\mathbf{A}) = dim(C(\mathbf{A})) =dim(R(\mathbf{A}))$ \\
+    % null space
+    $\mathit{N}(\mathbf{A}) = \{\mathbf{x}: \mathbf{Ax}=\mathbf{0}\}$\\
     % nullity
-    $\mathit{nullity}(\mathbf{A}) = \mathit{dim}(\mathit{kernel}(\mathbf{A}))$
-    \item[Rank-nullity Theorem:]
-    $\textit{dim}(\textit{kernel}(\textbf{A}))+\textit{dim}(\textit{range}(\textbf{A})) = n$
+    $N(\mathbf{A})\,\bot\,R(\mathbf{A}),\  N(\mathbf{A}^\top)\,\bot\,C(\mathbf{A})$
+    \item[Rank-null Thrm:]
+    $\textit{rank}(\textbf{A})+\textit{dim}(N(\textbf{A})) = cols$
     
-	\item[Orthogonal Matrix:] $\mathbf{A}^{-1} = \mathbf{A}^\top$, $\mathbf{A} \mathbf{A}^\top = \mathbf{A}^\top \mathbf{A} = \mathbf{I}$, $\operatorname{det}(\mathbf{A}) \in \{+1, -1\}$, $\operatorname{det}(\mathbf{A}^\top \mathbf{A}) = 1$,
+	\item[Orthog Matrix:] $\mathbf{Q}^{-1} = \mathbf{Q}^\top$, $\mathbf{Q} \mathbf{Q}^\top = \mathbf{Q}^\top \mathbf{Q} = \mathbf{I}$
 	preserves inner product, norm, distance, angle, rank, matrix orthogonality 
 	
-	\item[Inner Product:] $\langle \mathbf{x}, \mathbf{y} \rangle = \mathbf{x}^\top \mathbf{y} = \sum_{i=1}^{N} \mathbf{x}_i \mathbf{y}_i$.
-	\begin{inparaitem}
-		\item $\langle \mathbf{x} \pm \mathbf{y}, \mathbf{x} \pm \mathbf{y} \rangle = \langle \mathbf{x}, \mathbf{x} \rangle \pm 2 \langle \mathbf{x}, \mathbf{y} \rangle + \langle \mathbf{y}, \mathbf{y} \rangle$
-		\item $(\mathbf{u}_i^T\mathbf{v}_j)\mathbf{v}_j = (\mathbf{v}_j\mathbf{v}_j^T)\mathbf{u}_i$
+	\item[Dot Product:] $\langle \mathbf{x}, \mathbf{y} \rangle = \mathbf{x}^\top \mathbf{y} = \sum_{i=1}^{N} x_i y_i$ = $||\mathbf{x}||\,||\mathbf{y}||\cos{\theta}$.
+	\begin{inparaitem}[\color{red}\textbullet]
+	\item $\langle \mathbf{x} + \mathbf{y}, \mathbf{z} \rangle = \langle \mathbf{x}, \mathbf{z} \rangle + \langle \mathbf{y}, \mathbf{z} \rangle$
+	\item $\langle \mathbf{x} \pm \mathbf{y}, \mathbf{x} \pm \mathbf{y} \rangle = \langle \mathbf{x}, \mathbf{x} \rangle \pm 2 \langle \mathbf{x}, \mathbf{y} \rangle + \langle \mathbf{y}, \mathbf{y} \rangle$
+	\item $\langle \mathbf{u}, \mathbf{v} \rangle \mathbf{v} = (\mathbf{v}\mathbf{v}^\top)\mathbf{u}$
 	\end{inparaitem}
 	\item[Outer Product:] $\mathbf{u} \mathbf{v}^\top$, $(\mathbf{u} \mathbf{v}^\top)_{i, j} = \mathbf{u}_i \mathbf{v}_j$
     \item[Trace:] $\mathit{trace}(\mathbf{XYZ})=\mathit{trace}(\mathbf{ZXY})$
-	\item[Transpose:] $(\mathbf{A}^\top)^{-1} = (\mathbf{A}^{-1})^\top$,  $(\mathbf{A}\mathbf{B})^\top= \mathbf{B}^\top\mathbf{A}^\top$, $(\mathbf{A}+\mathbf{B})^\top= \mathbf{A}^\top + \mathbf{B}^\top$
-	\item[Cross product:] $\vec{a}\times\vec{b}=(a_2b_3-a_3b_2, a_3b_1-a_1b_3, a_1b_2-a_2b_1)^\top$
-	\item[Cauchy-Schwarz inequality:] $|\langle\mathbf{u}, \mathbf{v}\rangle| \leq \|\mathbf{u}\|\|\mathbf{v}\|$
+	\item[Transpose:] $(\mathbf{A}^\top)^{-1} = (\mathbf{A}^{-1})^\top$,  $(\mathbf{A}\mathbf{B})^\top= \mathbf{B}^\top\mathbf{A}^\top$
 \end{compactdesc}
 
 \subsection*{Norms}
-\begin{inparaitem}
-	\item $\|\mathbf{x}\|_0 = |\{i | x_i \neq 0\}|$ \\
-	\item $\|\mathbf{x}\|_2 = \sqrt{\sum_{i=1}^{N} \mathbf{x}_i^2} = \sqrt{\langle \mathbf{x}, \mathbf{x} \rangle}$ \\
-	\item $\|\mathbf{u}-\mathbf{v}\|_2 = \sqrt{(\mathbf{u}-\mathbf{v})^\top(\mathbf{u}-\mathbf{v})}$ \\
-	\item $\|\mathbf{x}\|_p = \left( \sum_{i=1}^{N} |x_i|^p \right)^{\frac{1}{p}}$ \\
+\begin{itemize}
+	\item $\|\mathbf{x}\|_0 = |\,\{x_i \,|\, x_i \neq 0\}\,|$ \text{\# non-zero elems}
+	\item $\|\mathbf{x}\|_2 = \sqrt{\sum_{i=1}^{N} x_i^2} = \sqrt{\langle \mathbf{x}, \mathbf{x} \rangle}$ 
+	\item $\|\mathbf{u}-\mathbf{v}\|_2 = \sqrt{(\mathbf{u}-\mathbf{v})^\top(\mathbf{u}-\mathbf{v})}$
+	\item $\|\mathbf{x}\|_p = \left( \sum_{i=1}^{N} |\,x_i\,|^p \right)^{\frac{1}{p}}$
 	\item
-	$\|\mathbf{M}\|_F =\allowbreak \sqrt{\sum_{i=1}^{m} \sum_{j=1}^{n}\mathbf{m}_{i,j}^2} = \sqrt{\sum_{i=1}^{\min\{m, n\}} \sigma_i^2} \allowbreak = \|\sigma(\mathbf{A})\|_2  = \sqrt{trace(\mathbf{M}^T\mathbf{M})} $\\
-	\item $\|\mathbf{M}\|_G=\sqrt{\sum_{ij}{g_{ij}x^2_{ij}}}$ (weighted Frobenius) \\
+	$\|\mathbf{A}\|_F = \sqrt{\sum \sum a_{i,j}^2} = \sqrt{trace(\mathbf{A}^T\mathbf{A})} = \sqrt{\sum_{i=1}^{\min\{m, n\}} \sigma_i^2} \allowbreak = \|\sigma(\mathbf{A})\|_2  $\\
+	\item $\|\mathbf{A}\|_G=\sqrt{\sum_{ij}\ {g_{ij}\,a^2_{ij}}}$ (weighted Frobenius)
 	\item
-	$\|\mathbf{M}\|_1 = \sum_{i,j} | m_{i,j}|$ \\
-	\item $\|\mathbf{M}\|_2 = \sigma_{\text{max}}(\mathbf{M}) = \|\sigma(\mathbf(M))\|_\infty$\\
-	\item $\|\mathbf{M}\|_p = \max_{\mathbf{v} \neq 0} \frac{\|\mathbf{M}\mathbf{v}\|_p}{\|\mathbf{v}\|_p}$ \\
-	\item $\|\mathbf{M}\|_\star = \sum_{i=1}^{\min(m, n)} \sigma_i = \|\sigma(\mathbf{A})\|_1$ (nuclear)
-\end{inparaitem}
+	$\|\mathbf{A}\|_1 = \sum_{i,j} | a_{i,j}|$ \\
+	\item $\|\mathbf{A}\|_2 = \sigma_{\text{max}}(\mathbf{A}) = \|\sigma(\mathbf{A})\|_\infty$
+	\item $\|\mathbf{A}\|_p = \max \|\mathbf{A}\mathbf{v}\|_p : \|\mathbf{v}\|_p=1$ max stretch
+	\item $\|\mathbf{A}\|_* = \sum_{i=1}^{\min(m, n)} \sigma_i = \|\sigma(\mathbf{A})\|_1$ (nuclear)
+\end{itemize}
 
 \subsection*{Derivatives}
-$\frac{\partial}{\partial \mathbf{x}}(\mathbf{b}^\top \mathbf{x}) = \frac{\partial}{\partial \mathbf{x}}(\mathbf{x}^\top \mathbf{b}) = \mathbf{b}$ \quad
-$\frac{\partial}{\partial \mathbf{x}}(\mathbf{x}^\top \mathbf{x}) = 2\mathbf{x}$\\
-$\frac{\partial}{\partial \mathbf{x}}(\mathbf{x}^\top \mathbf{A}\mathbf{x}) = (\mathbf{A}^\top + \mathbf{A})\mathbf{x}$ \quad
-$\frac{\partial}{\partial \mathbf{x}}(\mathbf{b}^\top \mathbf{A}\mathbf{x}) = \mathbf{A}^\top \mathbf{b}$\\
-$\frac{\partial}{\partial \mathbf{X}}(\mathbf{c}^\top \mathbf{X} \mathbf{b}) = \mathbf{c}\mathbf{b}^\top$ \quad
-$\frac{\partial}{\partial \mathbf{X}}(\mathbf{c}^\top \mathbf{X}^\top \mathbf{b}) = \mathbf{b}\mathbf{c}^\top$\\
-$\frac{\partial}{\partial \mathbf{x}}(\| \mathbf{x}-\mathbf{b} \|_2) = \frac{\mathbf{x}-\mathbf{b}}{\|\mathbf{x}-\mathbf{b}\|_2}$ \quad
-$\frac{\partial}{\partial \mathbf{x}}(\|\mathbf{x}\|^2_2) = \frac{\partial}{\partial \mathbf{x}} (\mathbf{x}^\top \mathbf{x}) = 2\mathbf{x}$\\
-$\frac{\partial}{\partial \mathbf{X}}(\|\mathbf{X}\|_F^2) = 2\mathbf{X}$ \quad
-$\frac{\partial}{\partial \mathbf{x}}\log(x) = \frac{1}{x}$
-
-\subsection*{Eigendecomposition}
-$\mathbf{A} \in \mathbb{R}^{N \times N}$ then $\mathbf{A} = \mathbf{Q} \boldsymbol{\Lambda} \mathbf{Q}^{-1}$ with $\mathbf{Q} \in \mathbb{R}^{N \times N}$.\\
-if fullrank: $\mathbf{A}^{-1} = \mathbf{Q} \boldsymbol{\Lambda}^{-1} \mathbf{Q}^{-1}$ and $(\boldsymbol{\Lambda}^{-1})_{i,i} = \frac{1}{\lambda_i}$.\\
-if $\mathbf{A}$ symmetric: $A = \mathbf{Q} \boldsymbol{\Lambda} \mathbf{Q^\top}$ ($\mathbf{Q}$ orthogonal).
+\begin{inparaitem}[\color{red}\textbullet]
+\item $\frac{\partial}{\partial \mathbf{x}}(\mathbf{b}^\top \mathbf{x}) = \frac{\partial}{\partial \mathbf{x}}(\mathbf{x}^\top \mathbf{b}) = \mathbf{b}$
+\item $\frac{\partial}{\partial \mathbf{x}}(\mathbf{x}^\top \mathbf{x}) = 2\mathbf{x}$
+\item $\frac{\partial}{\partial \mathbf{x}}(\mathbf{x}^\top \mathbf{A}\mathbf{x}) = (\mathbf{A}^\top + \mathbf{A})\mathbf{x}$ 
+\item $\frac{\partial}{\partial \mathbf{x}}(\mathbf{b}^\top \mathbf{A}\mathbf{x}) = \mathbf{A}^\top \mathbf{b}$
+\item $\frac{\partial}{\partial \mathbf{X}}(\mathbf{c}^\top \mathbf{X} \mathbf{b}) = \mathbf{c}\mathbf{b}^\top$ 
+\item $\frac{\partial}{\partial \mathbf{X}}(\mathbf{c}^\top \mathbf{X}^\top \mathbf{b}) = \mathbf{b}\mathbf{c}^\top$
+\item $\frac{\partial}{\partial \mathbf{x}}(\| \mathbf{Ax}-\mathbf{b} \|^2_2) = \mathbf{2A^T(Ax -b)}$
+\item $\frac{\partial}{\partial \mathbf{x}}(\| \mathbf{x}-\mathbf{b} \|_2) = \frac{\mathbf{x}-\mathbf{b}}{\|\mathbf{x}-\mathbf{b}\|_2}$ 
+\item $\frac{\partial}{\partial \mathbf{x}}(\|\mathbf{x}\|^2_2) = \frac{\partial}{\partial \mathbf{x}} (\mathbf{x}^\top \mathbf{x}) = 2\mathbf{x}$
+\item $\frac{\partial}{\partial \mathbf{X}}(\|\mathbf{X}\|_F^2) = 2\mathbf{X}$ 
+\item $\frac{d}{dx}\log(x) = \frac{1}{x}$
+\end{inparaitem}
 
 \subsection*{Probability / Statistics}
 \begin{inparaitem}
-	\item $P(x) := Pr[X = x] := \sum_{y \in Y} P(x, y)$
-	\item $P(x|y) := Pr[X = x | Y = y] := \frac{P(x,y)}{P(y)},\quad \text{if } P(y) > 0$
-	\item $\forall y \in Y: \sum_{x \in X} P(x|y) = 1$ (property for any fixed $y$)
+	\item $P(x) := Pr[X = x] := \sum_{y} P(x, y)$
 	\item $P(x, y) = P(x|y) P(y)$
+	\item $\forall y\in Y: \sum_{x} P(x|y) = 1$\\
 	\item $P(x|y) = \frac{P(y|x)P(x)}{P(y)}$ (Bayes' rule)
-	\item $P(x|y) = P(x) \Leftrightarrow P(y|x) = P(y)$ (iff $X$, $Y$ independent)
-	\item $P(x_1, \ldots, x_n) = \prod_{i=1}^n P(x_i)$ (iff IID)
-	\item Variance $Var[X]:= E[(X-\mu_x)^2]:=\sum_{x \in X}(x-\mu_x)^2P(x)= E(X^2) - E(X)^2$
-	\item expectation $\mu_x := E[X]:=\sum_{x \in X}xP(x)$
-	\item standard deviation $\sigma_x := \sqrt{Var[X]}$
+	\item $P(x_1, \ldots, x_n) = \prod_{i=1}^n P(x_i)$ (iff i.i.d.)
+	\item $E[X]:=\sum_{x \in X}p(x)\,x$
+	\item $Var[X]:= E[(X-\mu_x)^2]:= E(X^2) - E(X)^2$
+	\item $Var[aX + bY]:= a^2Var[X] + b^2Var[Y] +2ab\, Cov[X,Y]$
 \end{inparaitem}
 
+\subsection*{Eigendecomposition}
+Full rank $\mathbf{A} = \mathbf{X} \boldsymbol{\Lambda} \mathbf{X}^{-1}$ with $\mathbf{A, X} \in \mathbb{R}^{N \times N}$.\\
+Symmetric $\mathbf{S} = \mathbf{S}^\top = \mathbf{Q} \boldsymbol{\Lambda} \mathbf{Q^\top}$ ($\mathbf{Q}$ orthogonal).
 
-\subsection*{Lagrangian Multipliers}
-Minimize  $f(\mathbf{x})$ s.t. $g_i(\mathbf{x}) \leq 0,\ i = 1, .., m$ (\textbf{inequality constr.}) and $h_i(\mathbf{x}) = \mathbf{a}_i^\top \mathbf{x} - b_i = 0,\ i = 1, .., p$ (\textbf{equality constraint}) \\
-$L(\mathbf{x}, \boldsymbol{\lambda}, \boldsymbol{\nu}) := f(\mathbf{x}) + \sum_{i=1}^m \lambda_i g_i(\mathbf{x}) + \sum_{i=1}^p \nu_i h_i(\mathbf{x})$
+\subsection*{Singular Value Decomposition}
+$\mathbf{A} = \mathbf{U} \mathbf{\Sigma} \mathbf{V}^\top = \sigma_{1} \mathbf{u}_1 \mathbf{v}_1^\top+..+\sigma_{r} \mathbf{u}_r \mathbf{v}_r^\top$ for $r=rank(\mathbf{A})$\\
+$\mathbf{A} \in \mathbb{R}^{N \times P}, \mathbf{U} \in \mathbb{R}^{N \times N}, \mathbf{\Sigma} \in \mathbb{R}^{N \times P}, \mathbf{V} \in \mathbb{R}^{P \times P}$\\
+$\mathbf{U}^\top \mathbf{U} = I = \mathbf{V}^\top \mathbf{V}$ ($\mathbf{U}, \mathbf{V}$ orthonormal)\\
+$\mathbf{U}$ cols eigenvectors of $\mathbf{A} \mathbf{A}^\top$, $\mathbf{V}$ cols eigenvectors of $\mathbf{A}^\top \mathbf{A}$, $\mathbf{\Sigma} = diag(\sigma_i)$ singular values.\\
+1. find $\mathbf{A}^\top \mathbf{A}$.\\
+2. find eigenvalues solving $ det(\mathbf{A}^\top\mathbf{A}-\lambda\mathbf{I}) = 0$, sort them in descending order to get singular values $\sigma_i = \sqrt{\lambda_i}$ and set $\mathbf{\Sigma} = diag(\sigma_i)$.\\
+3. find eigenvectors of $\mathbf{A}^\top \mathbf{A}$ from the eigenvalues, and set them as columns of $\mathbf{V}$.\\
+4. calculate the missing matrix: $\mathbf{U} = \mathbf{A} \mathbf{V} \mathbf{\Sigma}^{-1}$.\\
+5. normalize each column of $\mathbf{U}$ and $\mathbf{V}$.
