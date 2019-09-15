@@ -3,7 +3,7 @@
 Feel free to go ahead and create your own fork if you want to extend it or update it in future years.
 
 # Download the PDF
-[Latex online link](https://latexonline.cc/compile?git=https://github.com/larabr/eth-cil-exam-summary&target=main.tex)
+[Latex online link](https://latexonline.cc/compile?git=https%3A%2F%2Fgithub.com%2Flarabr%2Feth-cil-exam-cheatsheet&target=main.tex&command=pdflatex)
 
 # Disclaimer
 Please be advised that nothing found here is guaranteed to be complete, correct or anything else.
