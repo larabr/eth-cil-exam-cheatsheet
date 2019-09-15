@@ -9,8 +9,8 @@ Decompose object into features: topics, face parts, etc.. $\mathbf{u}$ weights o
 $p(w|d) = \sum_z p(w|d,z)p(z|d) \stackrel{*}{=} \sum_z p(w|z)p(z|d)$\\
 \textbf{Symmetric parametrization:}\\
 $p(w, d) = \sum_z p(z)p(w | z) p(d | z)$ \\
-Log-Likelihood: $L(\mathbf{U}, \mathbf{V}) = \sum_{i,j} x_{i,j}\log p(w_j|d_i) \\
-= \sum_{(i,j) \in X} \log \sum_{z=1}^K p(w_j|z)p(z|d_i)$ (concave) \\ 
+Log-Likelihood: $L(\mathbf{U}, \mathbf{V}) = \sum_{i,j} x_{i,j}\log p(w_j|d_i)$ \\
+$= \sum_{(i,j) \in X} \log \sum_{z=1}^K p(w_j|z)p(z|d_i)$ (concave) \\ 
 $ p(w_j|z) = v_{zj}$, $p(z|d_i) = u_{zi}$, $\sum_j^N v_{zj} = \sum_z^K u_{zi} = 1$\\
 E-Step (optimal q: posterior of z over $(d_i, w_j)$):\\
 $q_{zij} = \frac{p(w_j|z)p(z|d_i)}{\sum_{k=1}^K p(w_j|k)p(k|d_i)} := \frac{v_{zj}u_{zi}}{\sum_{k=1}^K v_{kj}u_{ki}}$, $\sum_z q_{zij}=1$\\
